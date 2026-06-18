@@ -15,12 +15,12 @@ import (
 	"github.com/apex/log"
 	"github.com/creasty/defaults"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/environment"
-	"github.com/pterodactyl/wings/events"
-	"github.com/pterodactyl/wings/remote"
-	"github.com/pterodactyl/wings/server/filesystem"
-	"github.com/pterodactyl/wings/system"
+	"github.com/shadowdactyl/wings/config"
+	"github.com/shadowdactyl/wings/environment"
+	"github.com/shadowdactyl/wings/events"
+	"github.com/shadowdactyl/wings/remote"
+	"github.com/shadowdactyl/wings/server/filesystem"
+	"github.com/shadowdactyl/wings/system"
 )
 
 // Server is the high level definition for a server instance being controlled
@@ -52,7 +52,7 @@ type Server struct {
 	emitter *events.Bus
 
 	// Defines the process configuration for the server instance. This is dynamically
-	// fetched from the Pterodactyl Server instance each time the server process is
+	// fetched from the Shadowdactyl Server instance each time the server process is
 	// started, and then cached here.
 	procConfig *remote.ProcessConfiguration
 

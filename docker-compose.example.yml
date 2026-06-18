@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   wings:
-    image: ghcr.io/pterodactyl/wings:latest
+    image: ghcr.io/shadowdactyl/wings:latest
     restart: always
     networks:
       - wings0
@@ -14,14 +14,14 @@ services:
       TZ: "UTC"
       WINGS_UID: 988
       WINGS_GID: 988
-      WINGS_USERNAME: pterodactyl
+      WINGS_USERNAME: shadowdactyl
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/var/lib/docker/containers/:/var/lib/docker/containers/"
-      - "/etc/pterodactyl/:/etc/pterodactyl/"
-      - "/var/lib/pterodactyl/:/var/lib/pterodactyl/"
-      - "/var/log/pterodactyl/:/var/log/pterodactyl/"
-      - "/tmp/pterodactyl/:/tmp/pterodactyl/"
+      - "/etc/shadowdactyl/:/etc/shadowdactyl/"
+      - "/var/lib/shadowdactyl/:/var/lib/shadowdactyl/"
+      - "/var/log/shadowdactyl/:/var/log/shadowdactyl/"
+      - "/tmp/shadowdactyl/:/tmp/shadowdactyl/"
       - "/etc/ssl/certs:/etc/ssl/certs:ro"
 	  - "/run/wings:/run/wings"
       # you may need /srv/daemon-data if you are upgrading from an old daemon

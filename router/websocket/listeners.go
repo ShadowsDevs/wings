@@ -8,10 +8,10 @@ import (
 
 	"emperror.dev/errors"
 
-	"github.com/pterodactyl/wings/events"
-	"github.com/pterodactyl/wings/system"
+	"github.com/shadowdactyl/wings/events"
+	"github.com/shadowdactyl/wings/system"
 
-	"github.com/pterodactyl/wings/server"
+	"github.com/shadowdactyl/wings/server"
 )
 
 // RegisterListenerEvents will setup the server event listeners and expiration
@@ -23,7 +23,7 @@ import (
 // Docker events being output to the socket will fail when it hasn't been
 // properly initialized yet.
 //
-// @see https://github.com/pterodactyl/panel/issues/3295
+// @see httpsgithub.com/ShadowsDevs/wings/shadowdactyl/panel/issues/3295
 func (h *Handler) registerListenerEvents(ctx context.Context) {
 	h.Logger().Debug("registering event listeners for connection")
 

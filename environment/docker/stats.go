@@ -10,7 +10,7 @@ import (
 	"emperror.dev/errors"
 	"github.com/docker/docker/api/types/container"
 
-	"github.com/pterodactyl/wings/environment"
+	"github.com/shadowdactyl/wings/environment"
 )
 
 // Uptime returns the current uptime of the container in milliseconds. If the
@@ -102,7 +102,7 @@ func (e *Environment) pollResources(ctx context.Context) error {
 // This math is from their CLI repository in order to show the same values to avoid people
 // bothering me about it. It should also reflect a slightly more correct memory value anyways.
 //
-// @see https://github.com/docker/cli/blob/96e1d1d6/cli/command/container/stats_helpers.go#L227-L249
+// @see httpsgithub.com/ShadowsDevs/wings/docker/cli/blob/96e1d1d6/cli/command/container/stats_helpers.go#L227-L249
 func calculateDockerMemory(stats container.MemoryStats) uint64 {
 	if v, ok := stats.Stats["total_inactive_file"]; ok && v < stats.Usage {
 		return stats.Usage - v
@@ -118,7 +118,7 @@ func calculateDockerMemory(stats container.MemoryStats) uint64 {
 // Calculates the absolute CPU usage used by the server process on the system, not constrained
 // by the defined CPU limits on the container.
 //
-// @see https://github.com/docker/cli/blob/aa097cf1aa19099da70930460250797c8920b709/cli/command/container/stats_helpers.go#L166
+// @see httpsgithub.com/ShadowsDevs/wings/docker/cli/blob/aa097cf1aa19099da70930460250797c8920b709/cli/command/container/stats_helpers.go#L166
 func calculateDockerAbsoluteCpu(pStats container.CPUStats, stats container.CPUStats) float64 {
 	// Calculate the change in CPU usage between the current and previous reading.
 	cpuDelta := float64(stats.CPUUsage.TotalUsage) - float64(pStats.CPUUsage.TotalUsage)

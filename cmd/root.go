@@ -26,16 +26,16 @@ import (
 	"golang.org/x/crypto/acme"
 	"golang.org/x/crypto/acme/autocert"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/environment"
-	"github.com/pterodactyl/wings/internal/cron"
-	"github.com/pterodactyl/wings/internal/database"
-	"github.com/pterodactyl/wings/loggers/cli"
-	"github.com/pterodactyl/wings/remote"
-	"github.com/pterodactyl/wings/router"
-	"github.com/pterodactyl/wings/server"
-	"github.com/pterodactyl/wings/sftp"
-	"github.com/pterodactyl/wings/system"
+	"github.com/shadowdactyl/wings/config"
+	"github.com/shadowdactyl/wings/environment"
+	"github.com/shadowdactyl/wings/internal/cron"
+	"github.com/shadowdactyl/wings/internal/database"
+	"github.com/shadowdactyl/wings/loggers/cli"
+	"github.com/shadowdactyl/wings/remote"
+	"github.com/shadowdactyl/wings/router"
+	"github.com/shadowdactyl/wings/server"
+	"github.com/shadowdactyl/wings/sftp"
+	"github.com/shadowdactyl/wings/system"
 )
 
 var (
@@ -45,7 +45,7 @@ var (
 
 var rootCommand = &cobra.Command{
 	Use:   "wings",
-	Short: "Runs the API server allowing programmatic control of game servers for Pterodactyl Panel.",
+	Short: "Runs the API server allowing programmatic control of game servers for Shadowdactyl Panel.",
 	PreRun: func(cmd *cobra.Command, args []string) {
 		initConfig()
 		initLogging()
@@ -108,11 +108,11 @@ func rootCmdRun(cmd *cobra.Command, _ []string) {
 	}
 	log.WithField("timezone", config.Get().System.Timezone).Info("configured wings with system timezone")
 	if err := config.ConfigureDirectories(); err != nil {
-		log.WithField("error", err).Fatal("failed to configure system directories for pterodactyl")
+		log.WithField("error", err).Fatal("failed to configure system directories for shadowdactyl")
 		return
 	}
-	if err := config.EnsurePterodactylUser(); err != nil {
-		log.WithField("error", err).Fatal("failed to create pterodactyl system user")
+	if err := config.EnsureShadowdactylUser(); err != nil {
+		log.WithField("error", err).Fatal("failed to create shadowdactyl system user")
 		return
 	}
 	if err := config.ConfigurePasswd(); err != nil {
@@ -215,8 +215,8 @@ func rootCmdRun(cmd *cobra.Command, _ []string) {
 			// machine is rebooted. It is much better for us to just have a single failed
 			// server instance than an entire offline node.
 			//
-			// @see https://github.com/pterodactyl/panel/issues/2475
-			// @see https://github.com/pterodactyl/panel/issues/3358
+			// @see httpsgithub.com/ShadowsDevs/wings/shadowdactyl/panel/issues/2475
+			// @see httpsgithub.com/ShadowsDevs/wings/shadowdactyl/panel/issues/3358
 			ctx, cancel := context.WithTimeout(cmd.Context(), time.Second*30)
 			defer cancel()
 
@@ -437,7 +437,7 @@ func initLogging() {
 func printLogo() {
 	fmt.Printf(colorstring.Color(`
                      ____
-__ [blue][bold]Pterodactyl[reset] _____/___/_______ _______ ______
+__ [blue][bold]Shadowdactyl[reset] _____/___/_______ _______ ______
 \_____\    \/\/    /   /       /  __   /   ___/
    \___\          /   /   /   /  /_/  /___   /
         \___/\___/___/___/___/___    /______/
@@ -445,9 +445,9 @@ __ [blue][bold]Pterodactyl[reset] _____/___/_______ _______ ______
 
 Copyright © 2018 - %d Dane Everitt & Contributors
 
-Website:  https://pterodactyl.io
- Source:  https://github.com/pterodactyl/wings
-License:  https://github.com/pterodactyl/wings/blob/develop/LICENSE
+Website:  https://shadowdactyl.io
+ Source:  httpsgithub.com/ShadowsDevs/wings/shadowdactyl/wings
+License:  httpsgithub.com/ShadowsDevs/wings/shadowdactyl/wings/blob/develop/LICENSE
 
 This software is made available under the terms of the MIT license.
 The above copyright notice and this permission notice shall be included

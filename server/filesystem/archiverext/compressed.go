@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: Copyright (c) 2016 Matthew Holt
 
 // Code in this file was derived from
-// https://github.com/mholt/archiver/blob/v4.0.0-alpha.8/fs.go
+// httpsgithub.com/ShadowsDevs/wings/mholt/archiver/blob/v4.0.0-alpha.8/fs.go
 //
 // These modifications were necessary to allow us to use an already open file
 // with archiver.FileFS.

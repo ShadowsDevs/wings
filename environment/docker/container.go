@@ -18,9 +18,9 @@ import (
 	"github.com/docker/docker/api/types/network"
 	"github.com/docker/docker/client"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/environment"
-	"github.com/pterodactyl/wings/system"
+	"github.com/shadowdactyl/wings/config"
+	"github.com/shadowdactyl/wings/environment"
+	"github.com/shadowdactyl/wings/system"
 )
 
 var ErrNotAttached = errors.Sentinel("not attached to instance")
@@ -123,7 +123,7 @@ func (e *Environment) InSituUpdate() error {
 	// CPU pinning cannot be removed once it is applied to a container. The same is true
 	// for removing memory limits, a container must be re-created.
 	//
-	// @see https://github.com/moby/moby/issues/41946
+	// @see httpsgithub.com/ShadowsDevs/wings/moby/moby/issues/41946
 	if _, err := e.client.ContainerUpdate(ctx, e.Id, container.UpdateConfig{
 		Resources: e.Configuration.Limits().AsContainerResources(),
 	}); err != nil {
@@ -156,7 +156,7 @@ func (e *Environment) Create() error {
 	a := e.Configuration.Allocations()
 	evs := e.Configuration.EnvironmentVariables()
 	for i, v := range evs {
-		// Convert 127.0.0.1 to the pterodactyl0 network interface if the environment is Docker
+		// Convert 127.0.0.1 to the shadowdactyl0 network interface if the environment is Docker
 		// so that the server operates as expected.
 		if v == "SERVER_IP=127.0.0.1" {
 			evs[i] = "SERVER_IP=" + cfg.Docker.Network.Interface
@@ -170,7 +170,7 @@ func (e *Environment) Create() error {
 	for key := range confLabels {
 		labels[key] = confLabels[key]
 	}
-	labels["Service"] = "Pterodactyl"
+	labels["Service"] = "Shadowdactyl"
 	labels["ContainerType"] = "server_process"
 
 	conf := &container.Config{
@@ -283,7 +283,7 @@ func (e *Environment) Destroy() error {
 	// Don't trigger a destroy failure if we try to delete a container that does not
 	// exist on the system. We're just a step ahead of ourselves in that case.
 	//
-	// @see https://github.com/pterodactyl/panel/issues/2001
+	// @see httpsgithub.com/ShadowsDevs/wings/shadowdactyl/panel/issues/2001
 	if err != nil && client.IsErrNotFound(err) {
 		return nil
 	}

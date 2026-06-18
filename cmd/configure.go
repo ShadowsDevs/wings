@@ -16,7 +16,7 @@ import (
 	"github.com/AlecAivazis/survey/v2/terminal"
 	"github.com/spf13/cobra"
 
-	"github.com/pterodactyl/wings/config"
+	"github.com/shadowdactyl/wings/config"
 )
 
 var configureArgs struct {
@@ -178,7 +178,7 @@ func getRequest() (*http.Request, error) {
 		return nil, err
 	}
 
-	r.Header.Set("Accept", "application/vnd.pterodactyl.v1+json")
+	r.Header.Set("Accept", "application/vnd.shadowdactyl.v1+json")
 	r.Header.Set("Content-Type", "application/json")
 	r.Header.Set("Authorization", fmt.Sprintf("Bearer %s", configureArgs.Token))
 

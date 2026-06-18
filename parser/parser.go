@@ -17,8 +17,8 @@ import (
 	"gopkg.in/ini.v1"
 	"gopkg.in/yaml.v3"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/internal/ufs"
+	"github.com/shadowdactyl/wings/config"
+	"github.com/shadowdactyl/wings/internal/ufs"
 )
 
 // The file parsing options that are available for a server configuration file.
@@ -551,8 +551,8 @@ func (f *ConfigurationFile) parseTextFile(file ufs.File) error {
 // the value was escaped or not to begin with before setting it, which I suppose
 // can work but jesus that is going to be some annoyingly complicated logic?
 //
-// @see https://github.com/pterodactyl/panel/issues/2308 (original)
-// @see https://github.com/pterodactyl/panel/issues/3009 ("bug" introduced as result)
+// @see httpsgithub.com/ShadowsDevs/wings/shadowdactyl/panel/issues/2308 (original)
+// @see httpsgithub.com/ShadowsDevs/wings/shadowdactyl/panel/issues/3009 ("bug" introduced as result)
 func (f *ConfigurationFile) parsePropertiesFile(file ufs.File) error {
 	b, err := io.ReadAll(io.LimitReader(file, maxConfigFileSize))
 	if err != nil {

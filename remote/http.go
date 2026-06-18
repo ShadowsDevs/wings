@@ -11,13 +11,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/pterodactyl/wings/internal/models"
+	"github.com/shadowdactyl/wings/internal/models"
 
 	"emperror.dev/errors"
 	"github.com/apex/log"
 	"github.com/cenkalti/backoff/v4"
 
-	"github.com/pterodactyl/wings/system"
+	"github.com/shadowdactyl/wings/system"
 )
 
 type Client interface {
@@ -105,8 +105,8 @@ func (c *client) requestOnce(ctx context.Context, method, path string, body io.R
 		return nil, err
 	}
 
-	req.Header.Set("User-Agent", fmt.Sprintf("Pterodactyl Wings/v%s (id:%s)", system.Version, c.tokenId))
-	req.Header.Set("Accept", "application/vnd.pterodactyl.v1+json")
+	req.Header.Set("User-Agent", fmt.Sprintf("Shadowdactyl Wings/v%s (id:%s)", system.Version, c.tokenId))
+	req.Header.Set("Accept", "application/vnd.shadowdactyl.v1+json")
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s.%s", c.tokenId, c.token))
 

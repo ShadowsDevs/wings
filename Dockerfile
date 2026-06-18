@@ -8,7 +8,7 @@ COPY go.mod go.sum /app/
 RUN go mod download
 COPY . /app/
 RUN CGO_ENABLED=0 go build \
-    -ldflags="-s -w -X github.com/pterodactyl/wings/system.Version=$VERSION" \
+    -ldflags="-s -w -X github.com/shadowdactyl/wings/system.Version=$VERSION" \
     -v \
     -trimpath \
     -o wings \
@@ -23,6 +23,6 @@ COPY --from=builder /etc/mime.types /etc/mime.types
 COPY --from=builder /app/wings /usr/bin/
 
 ENTRYPOINT ["/usr/bin/wings"]
-CMD ["--config", "/etc/pterodactyl/config.yml"]
+CMD ["--config", "/etc/shadowdactyl/config.yml"]
 
 EXPOSE 8080 2022

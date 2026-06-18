@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BSD-2-Clause
 
-// Some code in this file was derived from https://github.com/karrick/godirwalk.
+// Some code in this file was derived from httpsgithub.com/ShadowsDevs/wings/karrick/godirwalk.
 
 //go:build unix
 

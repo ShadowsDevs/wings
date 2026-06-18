@@ -12,9 +12,9 @@ import (
 	"github.com/pkg/sftp"
 	"golang.org/x/crypto/ssh"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/server"
-	"github.com/pterodactyl/wings/server/filesystem"
+	"github.com/shadowdactyl/wings/config"
+	"github.com/shadowdactyl/wings/server"
+	"github.com/shadowdactyl/wings/server/filesystem"
 )
 
 const (

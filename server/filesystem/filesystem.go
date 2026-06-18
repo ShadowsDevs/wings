@@ -17,8 +17,8 @@ import (
 	"github.com/gabriel-vasile/mimetype"
 	ignore "github.com/sabhiram/go-gitignore"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/internal/ufs"
+	"github.com/shadowdactyl/wings/config"
+	"github.com/shadowdactyl/wings/internal/ufs"
 )
 
 type Filesystem struct {
@@ -432,7 +432,7 @@ func (fs *Filesystem) Delete(p string) error {
 //		// hundred milliseconds and then try again up to three times before just returning the
 //		// error back to the caller.
 //		//
-//		// Based on code from: https://github.com/golang/go/issues/22220#issuecomment-336458122
+//		// Based on code from: httpsgithub.com/ShadowsDevs/wings/golang/go/issues/22220#issuecomment-336458122
 //		if err != nil && fo.busy < 3 && strings.Contains(err.Error(), "text file busy") {
 //			time.Sleep(100 * time.Millisecond << fo.busy)
 //			fo.busy++

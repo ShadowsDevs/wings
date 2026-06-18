@@ -23,10 +23,10 @@ import (
 	"github.com/docker/docker/pkg/parsers/operatingsystem"
 	"github.com/spf13/cobra"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/environment"
-	"github.com/pterodactyl/wings/loggers/cli"
-	"github.com/pterodactyl/wings/system"
+	"github.com/shadowdactyl/wings/config"
+	"github.com/shadowdactyl/wings/environment"
+	"github.com/shadowdactyl/wings/loggers/cli"
+	"github.com/shadowdactyl/wings/system"
 )
 
 const (
@@ -95,7 +95,7 @@ func diagnosticsCmdRun(*cobra.Command, []string) {
 	dockerVersion, dockerInfo, dockerErr := getDockerInfo()
 
 	output := &strings.Builder{}
-	fmt.Fprintln(output, "Pterodactyl Wings - Diagnostics Report")
+	fmt.Fprintln(output, "Shadowdactyl Wings - Diagnostics Report")
 	printHeader(output, "Versions")
 	fmt.Fprintln(output, "               Wings:", system.Version)
 	if dockerErr == nil {
@@ -167,7 +167,7 @@ func diagnosticsCmdRun(*cobra.Command, []string) {
 
 	printHeader(output, "Latest Wings Logs")
 	if diagnosticsArgs.IncludeLogs {
-		p := "/var/log/pterodactyl/wings.log"
+		p := "/var/log/shadowdactyl/wings.log"
 		if cfg != nil {
 			p = path.Join(cfg.System.LogDirectory, "wings.log")
 		}
